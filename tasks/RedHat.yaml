@@ -1,0 +1,17 @@
+---
+
+- name: add nagios repository
+  yum:
+    name: https://repo.nagios.com/nagios/{{ ansible_facts.distribution_major_version }}/nagios-repo-{{ dict_nagiosrepo[ansible_facts.distribution_major_version] }}.el{{ ansible_facts.distribution_major_version }}.noarch.rpm
+    state: present
+    disable_gpg_check: True
+
+- name: yum update cache
+  yum:
+    autoremove: yes
+    update_cache: yes
+
+- name: install ncpa package
+  yum:
+    name: ncpa
+    state: present

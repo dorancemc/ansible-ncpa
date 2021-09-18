@@ -1,0 +1,26 @@
+galaxy_info:
+  author: dorancemc
+  description: Role to install and configure ncpa
+  company: dorancemc
+  license: Apache-2.0
+  min_ansible_version: 2.9
+  platforms:
+  - name: EL
+    versions:
+    - 8
+    - 7
+    - 6
+    - 5
+  - name: Ubuntu
+    versions:
+    - focal
+    - bionic
+    - xenial
+  - name: Debian
+    versions:
+    - buster
+    - stretch
+    - jessie
+    - wheezy
+  galaxy_tags: [nagios,ncpa,monitoring,linux]
+dependencies: []

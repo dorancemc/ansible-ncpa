@@ -1,0 +1,7 @@
+---
+
+ncpa_config_path: /usr/local/ncpa/etc
+
+ncpa_nagios:
+  user: nagios
+  group: nagios

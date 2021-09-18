@@ -1,0 +1,14 @@
+---
+
+  - name: restarting ncpa
+    systemd:
+      name: ncpa_listener
+      state: restarted
+      enabled: yes
+    listen: restart ncpa
+
+  - name: check if ncpa is running
+    uri: 
+      url: https://localhost:{{ ncpa_config.listener.port }}/api?token={{ ncpa_config.api.community_string }}
+      validate_certs: no
+    listen: restart ncpa

@@ -1,0 +1,18 @@
+---
+
+- name: set OS dependent variables
+  include_vars: '{{ item }}'
+  with_first_found:
+    - '{{ ansible_facts.os_family }}.yaml'
+
+- name: set OS dependent tasks
+  include: '{{ item }}'
+  with_first_found:
+    - '{{ ansible_facts.os_family }}.yaml'
+
+- name: configure ncpa
+  template:
+    src: ncpa.cfg
+    dest: "{{ ncpa_config_path }}/ncpa.cfg"
+  notify: restart ncpa
+  tags: ncpa_config
