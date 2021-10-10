@@ -16,3 +16,9 @@
     dest: "{{ ncpa_config_path }}/ncpa.cfg"
   notify: restart ncpa
   tags: ncpa_config
+
+- name: modify log path perms
+  ansible.builtin.file:
+    path: "{{ ncpa_log_path }}"
+    state: directory
+    mode: '0770'
