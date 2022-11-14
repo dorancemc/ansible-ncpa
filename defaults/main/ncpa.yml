@@ -1,5 +1,7 @@
+---
 # https://www.nagios.org/ncpa/help.php#configuration-option-reference
-ncpa_config:
+ncpa_config: []
+ncpa_config_default:
   general:
     check_logging: 1
     check_logging_time: 30
@@ -30,8 +32,8 @@ ncpa_config:
     logfile: var/log/ncpa_passive.log
     pidfile: var/run/ncpa_passive.pid
   nrdp:
-    parent: 
-    token: 
+    parent:
+    token:
     hostname: NCPA 2
   kafkaproducer:
     hostname: None

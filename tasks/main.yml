@@ -6,7 +6,7 @@
     - '{{ ansible_facts.os_family }}.yaml'
 
 - name: set OS dependent tasks
-  include: '{{ item }}'
+  include_tasks: '{{ item }}'
   with_first_found:
     - '{{ ansible_facts.os_family }}.yaml'
 

@@ -7,12 +7,12 @@
 
 - name: add nagios repository
   ansible.builtin.apt_repository:
-    repo: deb https://repo.nagios.com/deb/{{ ansible_facts.distribution_release}} /
+    repo: "deb https://repo.nagios.com/deb/{{ ansible_facts.distribution_release }} /"
     state: present
 
 - name: apt update cache
   apt:
-    update_cache: yes
+    update_cache: true
 
 - name: install ncpa package
   apt:
