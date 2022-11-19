@@ -1,20 +1,20 @@
 ---
 
-- name: add apt key
-  ansible.builtin.apt_key:
+- name: Add ncpa apt repository key.
+  ansible.builtin.get_url:
     url: https://repo.nagios.com/GPG-KEY-NAGIOS-V2
-    state: present
+    dest: /etc/apt/trusted.gpg.d/gpg-key-nagios-v2.asc
+    mode: '0644'
+    force: true
 
 - name: add nagios repository
   ansible.builtin.apt_repository:
     repo: "deb https://repo.nagios.com/deb/{{ ansible_facts.distribution_release }} /"
     state: present
-
-- name: apt update cache
-  apt:
-    update_cache: true
+    filename: nagios
+    update_cache: True
 
 - name: install ncpa package
-  apt:
+  ansible.builtin.apt:
     name: ncpa
     state: present
