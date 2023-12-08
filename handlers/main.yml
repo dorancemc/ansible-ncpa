@@ -2,7 +2,7 @@
 
 - name: restarting ncpa
   systemd:
-    name: ncpa_listener
+    name: ncpa.service
     state: restarted
     enabled: yes
   listen: restart ncpa
