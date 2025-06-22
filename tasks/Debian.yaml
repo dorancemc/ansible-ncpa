@@ -12,9 +12,9 @@
     types:
       - deb
     uris:
-      - https://repo.nagios.com/deb/{{ ansible_distribution_release }}
+      - https://repo.nagios.com/deb
     suites:
-      - /
+      - "{{ ansible_distribution_release }}"
     components:
       - main
     signed_by: /usr/share/keyrings/nagios-archive-keyring.gpg
