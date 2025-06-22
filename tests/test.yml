@@ -1,6 +1,5 @@
 ---
 
-- hosts: localhost
-  become: true
+- hosts: all
   roles:
-    - { role: ../ansible-ncpa }
+    - { role: ncpa }
