@@ -1,26 +1,31 @@
 ---
 
-- name: set OS dependent variables
+- name: Set OS dependent variables
   ansible.builtin.include_vars: '{{ item }}'
   with_first_found:
     - '{{ ansible_facts.os_family }}.yaml'
 
-- name: set OS dependent tasks
+- name: Execute OS dependent tasks
   ansible.builtin.include_tasks: '{{ item }}'
   with_first_found:
     - '{{ ansible_facts.os_family }}.yaml'
 
-- name: configure ncpa
+- name: Configure NCPA from template
   become: true
   ansible.builtin.template:
     src: ncpa.cfg
     dest: "{{ ncpa_config_path }}/ncpa.cfg"
+    owner: "{{ ncpa_nagios.user }}"
+    group: "{{ ncpa_nagios.group }}"
+    mode: '0644'
   notify: restart ncpa
   tags: ncpa_config
 
-- name: modify log path perms
+- name: Set NCPA log directory permissions
   become: true
   ansible.builtin.file:
     path: "{{ ncpa_log_path }}"
     state: directory
+    owner: "{{ ncpa_nagios.user }}"
+    group: "{{ ncpa_nagios.group }}"
     mode: '0770'

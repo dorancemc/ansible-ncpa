@@ -1,19 +1,19 @@
 ---
 
-- name: add nagios repository
+- name: Add Nagios repository for RedHat/CentOS
   become: true
   ansible.builtin.yum:
     name: https://repo.nagios.com/nagios/{{ ansible_facts.distribution_major_version }}/nagios-repo-{{ dict_nagiosrepo[ansible_facts.distribution_major_version] }}.el{{ ansible_facts.distribution_major_version }}.noarch.rpm
     state: present
     disable_gpg_check: true
 
-- name: yum update cache
+- name: Update YUM package cache
   become: true
   ansible.builtin.yum:
-    autoremove: true
     update_cache: true
+  changed_when: false
 
-- name: install ncpa package
+- name: Install NCPA package
   become: true
   ansible.builtin.yum:
     name: ncpa
