@@ -1,8 +1,19 @@
 ---
+# Variables for RedHat/CentOS systems
+# No longer needed since we use explicit URLs from official documentation
 
-dict_nagiosrepo:
-  "9": 9-2
-  "8": 8-2
-  "7": 7-5
-  "6": 6-4
-  "5": 5-2
+epel_repo_urls:
+  "8": "https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm"
+  "9": "https://dl.fedoraproject.org/pub/epel/epel-release-latest-9.noarch.rpm"
+
+nagios_repo_urls:
+  "8": "https://repo.nagios.com/nagios/8/nagios-repo-8-2.el8.noarch.rpm"
+  "9": "https://repo.nagios.com/nagios/9/nagios-repo-9-2.el9.noarch.rpm"
+
+codeready_repos:
+  "8": "codeready-builder-for-rhel-8-x86_64-rpms"
+  "9": "codeready-builder-for-rhel-9-x86_64-rpms"
+
+package_manager:
+  "8": "yum"
+  "9": "dnf"

@@ -43,3 +43,5 @@ Author Information
 ------------------
 
 Dorance Martinez @dorancemc
+
+[![Validate Ansible Role](https://github.com/dorancemc/ansible-ncpa/actions/workflows/validate.yml/badge.svg)](https://github.com/dorancemc/ansible-ncpa/actions/workflows/validate.yml)
