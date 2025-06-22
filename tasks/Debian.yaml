@@ -1,5 +1,11 @@
 ---
 
+- name: Download Nagios GPG key
+  ansible.builtin.get_url:
+    url: https://repo.nagios.com/GPG-KEY-NAGIOS-V3
+    dest: /usr/share/keyrings/nagios-archive-keyring.gpg
+    mode: '0644'
+
 - name: Add Nagios repository using deb822 format
   ansible.builtin.deb822_repository:
     name: nagios
@@ -11,9 +17,12 @@
       - /
     components:
       - main
+    signed_by: /usr/share/keyrings/nagios-archive-keyring.gpg
     state: present
+
+- name: Update apt cache
+  ansible.builtin.apt:
     update_cache: true
-    gpg_key: https://repo.nagios.com/GPG-KEY-NAGIOS-V3
 
 - name: install ncpa package
   ansible.builtin.apt:
